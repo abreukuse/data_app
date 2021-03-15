@@ -1,1 +1,5 @@
-
+data_app/__pycache__/*
+data_app/download/*
+data_app/preprocessed_data/*
+data_app/unziped_files/*
+data_app/dictionary_master.json
