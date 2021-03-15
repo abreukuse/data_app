@@ -1,0 +1,4 @@
+pymongo==3.11.3 
+tqdm==4.59.0
+selenium==3.141.0
+urllib3==1.25.10
