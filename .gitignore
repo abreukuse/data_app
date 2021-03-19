@@ -5,3 +5,4 @@ data_app/unziped_files/*
 data_app/dictionary_master.json
 data_app/.ipynb_checkpoints/*
 .venv/*
+cities_RS.txt
