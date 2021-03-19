@@ -58,6 +58,7 @@ def get_all_keys(dictionary, empty_list):
 
 
 def main():
+    """Create a nested dictionary containing all the keys available."""
     storage = []
     path = os.getcwd() + '\\preprocessed_data\\'
     files = os.listdir(path)
