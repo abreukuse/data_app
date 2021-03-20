@@ -1,3 +1,7 @@
+"""
+Build the web app.
+"""
+
 import streamlit as st
 import numpy as np
 import json
@@ -30,7 +34,7 @@ def getFromDict(dataDict, mapList):
     Access all the next keys in a nested dictionary from a list of previous keys.
     ------------------------------------------------------
     dataDict: Dictionary containind all the keys necessary.
-    mapList: List which the elements in order provide a specific path inside the dictionary.
+    mapList: List in which the items in order, provide a specific path inside the dictionary.
     """
     result = reduce(operator.getitem, mapList, dataDict)
     if isinstance(result, dict):
@@ -43,11 +47,11 @@ keys = []
 def dropdown(last_dropdown, options, id_):
     """
     Generate the dropdown widgets in the web app from which the user can select their desired data visializaation.
-    This function is used in a recursive manner: The nex dropdown is created from the last one and so forth.
+    This function is used in a recursive manner: The next dropdown is created from the last one and so forth.
     -------------------------------------------------
-    last_dropdown: The option chosed by the user in the last dropdown
+    last_dropdown: The option chosen by the user in the last dropdown
     options: The options available in the current dropdown
-    id_: This is the key arguemnt required in the selectbox from streamlit.
+    id_: This is the key argument required in the selectbox from streamlit.
     """
     if last_dropdown != '':
         options = [''] + options
