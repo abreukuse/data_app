@@ -4,6 +4,10 @@ import json
 from functools import reduce
 import operator
 from ast import literal_eval
+from mongodb_query import find_document
+from generate_plot import get_values, build_dataframe, visualize
+
+st.set_page_config(layout="wide")
 
 @st.cache(show_spinner=False)
 def load_dict():
@@ -31,8 +35,6 @@ def getFromDict(dataDict, mapList):
     result = reduce(operator.getitem, mapList, dataDict)
     if isinstance(result, dict):
         return list(result.keys())
-    else:
-        st.write('Cheguei no valor')
         
 
 options = list(dictionary_master.keys())
@@ -57,7 +59,22 @@ def dropdown(last_dropdown, options, id_):
 
         options = getFromDict(dictionary_master, keys)
         if options != None:
+            # st.write(keys)
             return dropdown(last_dropdown=next_dropdown, options=options, id_=id_)
+        if options == None:
+            query = '.'.join(keys)
+            st.write(' - '.join(keys))
+            return query
+
 
 if __name__ == '__main__':
-    dropdown(last_dropdown=city, options=options, id_=1)
+    query = dropdown(last_dropdown=city, options=options, id_=1)
+    if isinstance(query, str):
+        try:
+            result_query = find_document(query=query, city=city)
+            print(result_query)
+            values = get_values(result_query=result_query)
+            dataframe = build_dataframe(dictionary=values)
+            st.plotly_chart(visualize(dataframe, city))
+        except:
+            st.write('A busca não obteve resultado.')
