@@ -1,3 +1,8 @@
+"""
+Create a nested dictionary containing all the keys available.
+And also some of these fuctions will be used by others parts of the application.
+"""
+
 from functools import reduce
 import os
 import json
@@ -58,7 +63,7 @@ def get_all_keys(dictionary, empty_list):
 
 
 def main():
-    """Create a nested dictionary containing all the keys available."""
+    """Create a nested dictionary containing all the keys available from the json files."""
     storage = []
     path = os.getcwd() + '\\preprocessed_data\\'
     files = os.listdir(path)
