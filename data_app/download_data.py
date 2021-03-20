@@ -1,7 +1,7 @@
-# Este código baixa automaticamente os dados abertos da Fundação de Economia e Estatística
-# usando a ferramenta Selenium.
-
+# This code automatically downloads the open data from the 
+# Foundation for Economics and Statistics (Fundação de Economia e Estatística) web site: 
 # https://dados.fee.tche.br/index.php
+# using the Selenium tool.
 
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -26,28 +26,29 @@ def run_download():
 
     driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=chrome_options) # instalar chrome driver
     time.sleep(5)
-    driver.implicitly_wait(30) # espera carregar as coisas da página
-    driver.get('https://dados.fee.tche.br') # abre o navegador
+    driver.implicitly_wait(30) # expects to load things from the page
+    driver.get('https://dados.fee.tche.br') # opens the browser
     driver.maximize_window() # maximizar
-    driver.find_element_by_id('unidadegeo').click() # abre a lista do drop down
-    driver.find_element_by_xpath('//*[@id="unidadegeo"]/option[3]').click() # seleciona municípios nas opções do dropdown
+    driver.find_element_by_id('unidadegeo').click() # opens the dropdown list
+    driver.find_element_by_xpath('//*[@id="unidadegeo"]/option[3]').click() # select municipalities in dropdown options
 
-    # abre todas as pastas expostas
-    uma_camada = driver.find_elements_by_class_name('dynatree-title') # encontro todas as pastas expostas no site
+    # opens all exposed folders
+    uma_camada = driver.find_elements_by_class_name('dynatree-title') # find all folders exposed on the site
 
-    nomes_uma_camada = [] # lista em que vou guardar os nomes das pastas
+    nomes_uma_camada = [] # list in which it will be saved the folder names
 
-    # loop para pegar os nomes das pastas e clicar nelas
+    # loop to get folder names and click on them
     for pasta in uma_camada:
         titulo = pasta.get_attribute('title')
         nomes_uma_camada.append(titulo)
         pasta.click()
  
-    # lista em que serão armazenadas as camadas anteriores.
-    # Algo necessário para o procedimento
+   
+    # list in which the previous layers will be stored.
+    # Something needed for the procedure
     nomes_camadas_anteriores = [nomes_uma_camada] 
 
-    # loop que irá abrir todas as sub pastas escondidas
+    # loop that will open all hidden subfolders
     for i in range(4):
         camadas = driver.find_elements_by_class_name('dynatree-title')
         
@@ -56,7 +57,7 @@ def run_download():
             titulo = each.get_attribute('title')
             nomes_camadas.append(titulo)
 
-        dicionario = list(zip(nomes_camadas, camadas)) # dicionario de tudo
+        dicionario = list(zip(nomes_camadas, camadas)) # dictionary of everything
         copia = dicionario[:]
         
         anterior = nomes_camadas_anteriores[i]
@@ -70,7 +71,7 @@ def run_download():
                 
         nomes_camadas_anteriores.append(nomes_camadas)
             
-    # essa lista possui alguns nomes de  pastas que não abriram no passo anterior porque algumas delas possuem o mesmo nome 
+    # this list has some folder names that didn’t open in the previous step because some of them have the same name
     falta_abrir = ['Abrir Pasta: Palmito', 
                    'Abrir Pasta: Número de Estabelecimentos',
                    'Abrir Pasta: Madeira em Tora',
@@ -79,29 +80,29 @@ def run_download():
                    'Abrir Pasta: Ensino Médio',
                    'Abrir Pasta: Valor Adicionado Bruto a Preços Básicos']
 
-    # pastas ainda fechadas
+    # folders that are still closed
     remanescentes = [(dicionario[i][0], dicionario[i][1]) for i in range(len(dicionario)) if dicionario[i][0] in falta_abrir]
-    clicar = [each[1] for i, each in (enumerate(remanescentes)) if i not in [1,2,4,9,12,14,16,17,23]] # não incluir as pastas que já estão abertas
+    clicar = [each[1] for i, each in (enumerate(remanescentes)) if i not in [1,2,4,9,12,14,16,17,23]] # do not include folders that are already open
 
-    # abrir as pasta que faltam
+    # open the missing folders
     for cada in clicar:
         cada.click()
         
-    # DOWNLOAD dos arquivos json
-    todos = driver.find_elements_by_class_name('dynatree-title') # lista de tudo o que está aberto
+    # DOWNLOAD json files
+    todos = driver.find_elements_by_class_name('dynatree-title') # list of everything that is open
     nomes = []
     for cada in todos:
-        nomes.append(cada.get_attribute('title')) # gera lista com os nomes de tudo
+        nomes.append(cada.get_attribute('title')) # generate list with the names of everything
 
-    total = list(zip(nomes, todos)) # concatena os nomes com os valores
+    total = list(zip(nomes, todos)) # concatenates names with values
 
-    # loop para baixar os arquivos
+    # loop to download the files
     for cada in total:
         if 'Selecionar Variável' in cada[0]:
             try:
                 cada[1].click()
-                driver.find_element_by_xpath('//*[@id="div_anos"]/fieldset/button[1]').click() # selecionar todos os anos
-                driver.find_element_by_id('link_json').click() # baixar os jsons
+                driver.find_element_by_xpath('//*[@id="div_anos"]/fieldset/button[1]').click() # select every year
+                driver.find_element_by_id('link_json').click() # download the jsons
             except:
                 print('erro em -->', titulo, cada[0])
 
