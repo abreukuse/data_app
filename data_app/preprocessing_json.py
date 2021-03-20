@@ -1,3 +1,7 @@
+"""
+Preprocess the data in order to insert them in a mongodb database.
+"""
+
 import os
 from zipfile import ZipFile
 from tqdm import tqdm
