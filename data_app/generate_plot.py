@@ -6,7 +6,7 @@ import pandas as pd
 import plotly.express as px
 
 def get_values(result_query):
-  	"""Get the values in the returned query from mongodb"""
+	"""Get the values in the returned query from mongodb"""
 	dictionary = {}
 	for each in result_query['valores']:
 		for variable in ['ano','unidade','valor']:
