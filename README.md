@@ -1,6 +1,6 @@
 ## Data visualization app
 At the moment I live in south of Brazil in a state called Rio Grande do Sul. There´s a state agency here called Foundation of economy and statistics ([Fundação de Economia e Estatística](https://dados.fee.tche.br/index.php) in portuguese) theat provides raw data about several socioeconomic variables. I`m building this simple web application where one can easily access time series visualization from any of the social and economic sectors available. For now, one time series can be visualize at a time, but I will keep adding features to support comparison between different variables.<br>
-Some examples are: Agriculture, Commerce, Education, Health Care, Transportation and many others. An explanation about each variable can be seen [here](http://deedados.planejamento.rs.gov.br/feedados/#!home/descricaovariaveis) (in portuguese).
+Some examples of what information can be seen are: Agriculture, Commerce, Education, Health Care, Transportation and many others. An explanation about each variable can be seen [here](http://deedados.planejamento.rs.gov.br/feedados/#!home/descricaovariaveis) (in portuguese).
 
 ### Steps
 
