@@ -19,11 +19,11 @@ In this step you need to run the [`preprocessing_json.py`](https://github.com/ab
 #### Data storage
 
 To store the data in MongoDB, the script [`data_storage_mongodb.py`](https://github.com/abreukuse/data_app/blob/master/data_app/data_storage_mongodb.py) need to be executed. The database `fee_database` and collection `collections` will be created.
-Another step that need to be made at this point in to run the script `embedded_documents.py`. This script will create a file called `dictionary_master.json`. This file is a nested dictionary and contains all the paths to reach the data values.
+Another step that need to be made at this point is to run the script `embedded_documents.py`. This script will create a file called `dictionary_master.json`. This file is a nested dictionary and contains all the paths to reach the data values.
 
 #### Data visualization
 
-The `generate_plot.py` script is responsible to create the time series charts. This module is executed inside the `app.py` file, so there´s no need to run it by itself.
+The `generate_plot.py` script is responsible for create the time series charts. This module is executed inside the `app.py` file, so there´s no need to run it by itself.
 
 #### App deployment
 
