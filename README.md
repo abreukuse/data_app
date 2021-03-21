@@ -14,7 +14,7 @@ The data were collected from [this](https://dados.fee.tche.br/index.php) web sit
 
 #### Data preprocessing
 
-In this step you need to run the [`preprocessing_json.py`](https://github.com/abreukuse/data_app/blob/master/data_app/preprocessing_json.py) script. This scrip will unzip all the files and store them in the `unziped_files` folder. After that, it will preprocess each file in order to put them in the desired shape for importing them in a MongoDB database. These files can be encountered in the `preprocessed_data` directory.
+In this step you need to run the [`preprocessing_json.py`](https://github.com/abreukuse/data_app/blob/master/data_app/preprocessing_json.py) script. This scrip will unzip all the files and store them in the `unziped_files` folder. After that, it will preprocess each file in order to put them in the desired shape for importing them in a MongoDB database. These files can be encountered in the `preprocessed_data` directory.<br>
 Also, you need to execute the file `create_cities_RS_list.py`. This script gets from the wikipedia [page](https://pt.wikipedia.org/wiki/Lista_de_munic%C3%ADpios_do_Rio_Grande_do_Sul) the names of all the 497 cities that compose the Rio Grande do Sul state and store them as a list in the `cities_RS.txt` file.
 
 #### Data storage
