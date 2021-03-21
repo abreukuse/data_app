@@ -14,6 +14,21 @@ from generate_plot import get_values, build_dataframe, visualize
 st.set_page_config(layout="wide")
 
 @st.cache(show_spinner=False)
+def show_introduction():
+    introduction = """
+    ## Visualização de Séries Temporais de Fatores Socioeconômicos do Estado do Rio Grande do Sul
+
+    Com essa aplicação é possível  visualizar dados de séries temporais de diversos fatores socioeconômicos do estado do Rio Grande do Sul. Os dados foram coletados do site da [Fundação de Economia e Estatística](https://dados.fee.tche.br/index.php).<br>
+    Para gerar uma visualização, selecione à esquerda o nome da cidade que você gostaria de saber alguma informação e novas opções de busca irão surgindo.<br> 
+    Alguns exemplos de dados que podem ser acessados são:  Agricultura, Comércio, Comunicações, Demografia, Educação, Emprego, Saúde, Segurança, Transportes entre outros.
+    Informações sobre o significado de cada variável socioeconômica pode ser vista nesse [link](http://deedados.planejamento.rs.gov.br/feedados/#!home/descricaovariaveis).
+
+    [Tobias de Abreu Kuse](https://www.linkedin.com/in/tobias-de-abreu-kuse/)<br>
+    [github](https://github.com/abreukuse/data_app) 
+    """
+    return introduction
+
+@st.cache(show_spinner=False)
 def load_dict():
     """Load the dictionary with all the keys and the list with all the cities."""
     with open('dictionary_master.json', 'r', encoding='latin1') as json_file:
@@ -24,9 +39,9 @@ def load_dict():
 
     return dictionary_master, cities
 
+st.markdown(show_introduction(), unsafe_allow_html=True)
 dictionary_master, cities = load_dict()
 
-st.title('Data App')
 city = st.sidebar.selectbox('Selecione a cidade', [''] + cities, index=0)
 
 def getFromDict(dataDict, mapList):
