@@ -1,7 +1,6 @@
 ## Data visualization app
-At the moment I live in south of Brazil in a state called Rio Grande do Sul. A state agency called Foundation of economy and statics ([Fundação de Economia e Estatística](https://dados.fee.tche.br/index.php) in portuguese) provides raw data about several socioeconomic variables. Some examples are: Agriculture, Commerce, Education, Health Care, Transportation and many others. An explanation about each variable can be seen [here](http://deedados.planejamento.rs.gov.br/feedados/#!home/descricaovariaveis) (in portuguese).
-
-I`m building this simple web application where one can easily access time series visualization from any of the social and economic sectors available. For now, one time series can be visualize at a time, but I will keep adding features to support comparison between different variables.
+At the moment I live in south of Brazil in a state called Rio Grande do Sul. There´s a state agency here called Foundation of economy and statistics ([Fundação de Economia e Estatística](https://dados.fee.tche.br/index.php) in portuguese) that provides raw data about several socioeconomic variables. I`m building this simple web application where one can easily access time series visualization from any of the social and economic sectors available. For now, one time series can be visualize at a time, but I will keep adding features to support comparison between different variables.<br>
+Examples of some information that can be seen are about: Agriculture, Commerce, Education, Health Care, Transportation and many others. An explanation about each variable can be seen [here](http://deedados.planejamento.rs.gov.br/feedados/#!home/descricaovariaveis) (in portuguese).
 
 ### Steps
 
@@ -15,7 +14,7 @@ The data were collected from [this](https://dados.fee.tche.br/index.php) web sit
 #### Data preprocessing
 
 In this step you need to run the [`preprocessing_json.py`](https://github.com/abreukuse/data_app/blob/master/data_app/preprocessing_json.py) script. This scrip will unzip all the files and store them in the `unziped_files` folder. After that, it will preprocess each file in order to put them in the desired shape for importing them in a MongoDB database. These files can be encountered in the `preprocessed_data` directory.<br>
-Also, you need to execute the file [`create_cities_RS_list.py`](https://github.com/abreukuse/data_app/blob/master/data_app/create_cities_RS_list.py). This script gets from the wikipedia [page](https://pt.wikipedia.org/wiki/Lista_de_munic%C3%ADpios_do_Rio_Grande_do_Sul) the names of all the 497 cities that compose the Rio Grande do Sul state and store them as a list in the `cities_RS.txt` file.
+Also, you need to execute the file [`create_cities_RS_list.py`](https://github.com/abreukuse/data_app/blob/master/data_app/create_cities_RS_list.py). This script gets, from the wikipedia [page](https://pt.wikipedia.org/wiki/Lista_de_munic%C3%ADpios_do_Rio_Grande_do_Sul), the names of all the 497 cities that compose the Rio Grande do Sul state and store them as a list in the `cities_RS.txt` file.
 
 #### Data storage
 
