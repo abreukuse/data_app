@@ -10,7 +10,7 @@ As a first step you need to clone the repo and ensure that you have installed th
 
 #### Data gathering
 
-The data were collected from [this](https://dados.fee.tche.br/index.php) web site with the help of [`selenium`](https://selenium-python.readthedocs.io/) library. In order to automatically download all the files run the script called [`download_data.py`](https://github.com/abreukuse/data_app/blob/master/data_app/download_data.py) inside the data_app folder. The files will be stored in the `download` directory.
+The data were collected from [this](https://dados.fee.tche.br/index.php) web site with the help of [`selenium`](https://selenium-python.readthedocs.io/) library. In order to automatically download all the files, run the script called [`download_data.py`](https://github.com/abreukuse/data_app/blob/master/data_app/download_data.py) inside the data_app folder. The files will be stored in the `download` directory.
 
 #### Data preprocessing
 
