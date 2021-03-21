@@ -3,13 +3,13 @@ Build the web app.
 """
 
 import streamlit as st
-import numpy as np
 import json
 from functools import reduce
 import operator
 from ast import literal_eval
 from mongodb_query import find_document
 from generate_plot import get_values, build_dataframe, visualize
+from config import DICTIONARY_MASTER, CITIES_LIST
 
 st.set_page_config(layout="wide")
 
@@ -31,10 +31,10 @@ def show_introduction():
 @st.cache(show_spinner=False)
 def load_dict():
     """Load the dictionary with all the keys and the list with all the cities."""
-    with open('dictionary_master.json', 'r', encoding='latin1') as json_file:
+    with open(DICTIONARY_MASTER, 'r', encoding='latin1') as json_file:
         dictionary_master = json.load(json_file)
 
-    with open('cities_RS.txt', 'r', encoding='latin1') as txt_file:
+    with open(CITIES_LIST, 'r', encoding='latin1') as txt_file:
         cities = [literal_eval(line) for line in txt_file][0]
 
     return dictionary_master, cities
@@ -91,9 +91,9 @@ if __name__ == '__main__':
     if isinstance(query, str):
         try:
             result_query = find_document(query=query, city=city)
-            print(result_query)
             values = get_values(result_query=result_query)
             dataframe = build_dataframe(dictionary=values)
             st.plotly_chart(visualize(dataframe, city))
-        except:
+        except Exception as e:
+            print(e)
             st.write('A busca não obteve resultado.')
