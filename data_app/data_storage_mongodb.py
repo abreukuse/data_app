@@ -6,6 +6,7 @@ import pymongo
 import json
 import os
 from tqdm import tqdm
+from config import PATH_PREPROCESSED_DATA
 
 def import_data_to_mongo():
     myclient = pymongo.MongoClient('mongodb://localhost:27017/')
@@ -13,7 +14,7 @@ def import_data_to_mongo():
 
     collections = database['collections']
 
-    data_path = os.getcwd() + '\\preprocessed_data\\'
+    data_path = PATH_PREPROCESSED_DATA
     files = os.listdir(data_path)
 
     json_files = []

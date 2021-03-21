@@ -7,6 +7,7 @@ from functools import reduce
 import os
 import json
 from tqdm import tqdm
+from config import DICTIONARY_MASTER, PATH_PREPROCESSED_DATA
 
 def nested_keys(keys, value):
     """
@@ -65,7 +66,7 @@ def get_all_keys(dictionary, empty_list):
 def main():
     """Create a nested dictionary containing all the keys available from the json files."""
     storage = []
-    path = os.getcwd() + '\\preprocessed_data\\'
+    path = PATH_PREPROCESSED_DATA
     files = os.listdir(path)
     try:
         for file in tqdm(files):
@@ -78,7 +79,7 @@ def main():
             storage.append(nested_dictionary)
 
         dictionary_master = reduce(merge, storage)
-        with open('dictionary_master.json', 'w') as output:
+        with open(DICTIONARY_MASTER, 'w') as output:
             json.dump(dictionary_master, output)
 
     except Exception as e:

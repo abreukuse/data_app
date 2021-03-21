@@ -7,9 +7,10 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 import os
+from config import DOWNLOAD_PATH
 
 def run_download():
-    path_download = os.getcwd() + '\\download\\'
+    path_download = DOWNLOAD_PATH
     print(f'Download directory: {path_download}')
     if not os.path.isdir(path_download):
         os.mkdir(path_download)
