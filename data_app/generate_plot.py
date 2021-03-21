@@ -13,7 +13,10 @@ def get_values(result_query):
 			include = None if each[variable] == '-' else each[variable]
 			dictionary.setdefault(variable, []).append(include)
 
-	dictionary['valor'] = [int(item.replace('.', '')) if item != None else None for item in dictionary['valor']]
+	dictionary['valor'] = [float(item.replace('.', '_').replace(',', '.')) 
+						  if item != None else None 
+						  for item in dictionary['valor']]
+
 	dictionary['ano'] = [int(item) for item in dictionary['ano']]
 	return dictionary
 
