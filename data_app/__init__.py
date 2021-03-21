@@ -1,4 +1,6 @@
-import pathlib
+import config
 
-PACKAGE_ROOT = pathlib.Path(data_app.__file__).resolve().parent
-VERSION_PATH = PACKAGE_ROOT / 'VERSION'
+VERSION_PATH = config.PACKAGE_ROOT / 'VERSION'
+
+with open(VERSION_PATH, 'r') as version_file:
+    __version__ = version_file.read().strip()
