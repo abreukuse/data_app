@@ -4,3 +4,5 @@ data_app/preprocessed_data/*
 data_app/unziped_files/*
 data_app/.ipynb_checkpoints/*
 .venv/*
+tox.ini
+data_app/data_wrangling/__pycache__/*
