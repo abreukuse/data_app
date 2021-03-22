@@ -1,4 +1,4 @@
-import config
+import data_app.config
 
 VERSION_PATH = config.PACKAGE_ROOT / 'VERSION'
 
