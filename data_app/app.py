@@ -9,7 +9,7 @@ import operator
 from ast import literal_eval
 from mongodb_query import find_document
 from generate_plot import get_values, build_dataframe, visualize
-from config import DICTIONARY_MASTER, CITIES_LIST
+from config import FILES
 
 st.set_page_config(layout="wide")
 
@@ -31,10 +31,12 @@ def show_introduction():
 @st.cache(show_spinner=False)
 def load_dict():
     """Load the dictionary with all the keys and the list with all the cities."""
-    with open(DICTIONARY_MASTER, 'r', encoding='latin1') as json_file:
+    path_dictionary = FILES / 'dictionary_master.json'
+    with open(path_dictionary, 'r', encoding='latin1') as json_file:
         dictionary_master = json.load(json_file)
 
-    with open(CITIES_LIST, 'r', encoding='latin1') as txt_file:
+    path_list = FILES / 'cities_RS.txt'
+    with open(path_list, 'r', encoding='latin1') as txt_file:
         cities = [literal_eval(line) for line in txt_file][0]
 
     return dictionary_master, cities
