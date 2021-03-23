@@ -10,7 +10,7 @@ from data_app.config import PATH_PREPROCESSED_DATA
 
 def import_data_to_mongo():
     # local connection = 'mongodb://localhost:27017/'
-    remote_connection = remote_connection = os.getenv('MONGODB_URI')
+    remote_connection = remote_connection = os.environ['MONGODB_URI']
     myclient = pymongo.MongoClient(remote_connection)
     database = myclient['fee_database']
 

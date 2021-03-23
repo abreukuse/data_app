@@ -6,7 +6,7 @@ import pymongo
 import os
 
 # local connection = 'mongodb://localhost:27017/'
-remote_connection = os.getenv('MONGODB_URI') # Access heroku config vars
+remote_connection = os.environ['MONGODB_URI'] # Access heroku config vars
 myclient = pymongo.MongoClient(remote_connection)
 database = myclient['fee_database']
 
