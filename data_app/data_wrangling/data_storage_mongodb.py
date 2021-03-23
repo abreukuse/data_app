@@ -1,15 +1,17 @@
 """
-Import all the json files as documents in MongoDB.
+Import all the json files as documents to MongoDB.
 """
 
 import pymongo
 import json
 import os
 from tqdm import tqdm
-from config import PATH_PREPROCESSED_DATA
+from data_app.config import PATH_PREPROCESSED_DATA
 
 def import_data_to_mongo():
-    myclient = pymongo.MongoClient('mongodb://localhost:27017/')
+    # local connection = 'mongodb://localhost:27017/'
+    remote_connection = remote_connection = os.getenv('MONGODB_URI')
+    myclient = pymongo.MongoClient(remote_connection)
     database = myclient['fee_database']
 
     collections = database['collections']
@@ -19,7 +21,7 @@ def import_data_to_mongo():
 
     json_files = []
     for file in tqdm(files):
-    	with open(data_path + file, 'r') as json_file:
+    	with open(data_path / file, 'r') as json_file:
     		json_files.append(json.load(json_file))
 
     print(f'Insert {len(json_files)} files.')

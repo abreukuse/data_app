@@ -3,8 +3,11 @@ Query data from mongodb.
 """
 
 import pymongo
+import os
 
-myclient = pymongo.MongoClient('mongodb://localhost:27017/')
+# local connection = 'mongodb://localhost:27017/'
+remote_connection = os.getenv('MONGODB_URI') # Access heroku config vars
+myclient = pymongo.MongoClient(remote_connection)
 database = myclient['fee_database']
 
 def find_document(query, city): 
