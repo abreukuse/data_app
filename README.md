@@ -2,9 +2,11 @@
 At the moment I live in south of Brazil in a state called Rio Grande do Sul. There´s a state agency here called Foundation of economy and statistics ([Fundação de Economia e Estatística](https://dados.fee.tche.br/index.php) in portuguese) that provides raw data about several socioeconomic variables. I`m building this simple web application where one can easily access time series visualization from any of the social and economic sectors available. For now, one time series can be visualize at a time, but I will keep adding features to support comparison between different variables.<br>
 Examples of some information that can be seen are about: Agriculture, Commerce, Education, Health Care, Transportation and many others. An explanation about each variable can be seen [here](http://deedados.planejamento.rs.gov.br/feedados/#!home/descricaovariaveis) (in portuguese).
 
+The app running on heroku can be accessed through this link: https://data-app-tk.herokuapp.com/
+
 ### Steps
 
-In order to reproduce the application yourself locally, there´s a number of steps that need to be made.<br>
+In order to reproduce the application yourself locally, there´s a number of steps that need to be done.<br>
 As a first step you need to clone the repo and ensure that you have installed the required packages in the [`requirements.txt`](https://github.com/abreukuse/data_app/blob/master/requirements.txt) file.
 
 #### Data gathering
@@ -27,5 +29,6 @@ The [`generate_plot.py`](https://github.com/abreukuse/data_app/blob/master/data_
 
 #### App deployment
 
-The web app user interface was made possible using the library [streamlit](https://streamlit.io/) and can be seen running the command: `streamlit run app.py`. The deployment in the platform [Heroku](https://www.heroku.com/) will be explained soon.
+The web app user interface was made possible using the library [streamlit](https://streamlit.io/) and can be accessed running the command: `streamlit run data_app/app.py`.<br> In order to deploy the app on [Heroku](https://www.heroku.com/), first I needed to sign up an account in [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) which is a database as a service and provides a free cluster where I could store my database on the cloud. I followed this [blog post](https://developer.mongodb.com/how-to/use-atlas-on-heroku/) that helped me to have everything setup, including the configuration for heroku access.
+Two new files are necessary in order for streamlit to work with heroku. They are: `Procfile` and `setup.sh`.
 
