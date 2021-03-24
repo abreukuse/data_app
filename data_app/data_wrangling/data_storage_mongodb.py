@@ -9,9 +9,9 @@ from tqdm import tqdm
 from data_app.config import PATH_PREPROCESSED_DATA
 
 def import_data_to_mongo():
-    local_connection = 'mongodb://localhost:27017/'
-    # remote_connection = os.environ['MONGODB_URI']
-    myclient = pymongo.MongoClient(local_connection)
+    # local_connection = 'mongodb://localhost:27017/'
+    remote_connection = os.environ['MONGODB_URI']
+    myclient = pymongo.MongoClient(remote_connection)
     database = myclient['fee_database']
 
     collections = database['collections']
