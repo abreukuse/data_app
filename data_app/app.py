@@ -58,7 +58,7 @@ def getFromDict(dataDict, mapList):
     if isinstance(result, dict):
         return list(result.keys())
         
-
+# Options available in the first dropdown
 options = list(dictionary_master.keys())
 
 keys = []
