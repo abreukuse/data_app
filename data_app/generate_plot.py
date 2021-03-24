@@ -6,7 +6,15 @@ import pandas as pd
 import plotly.express as px
 
 def get_values(result_query):
-    """Get the values in the returned query from mongodb"""
+    """
+    Get the necessary values in the returned query from mongodb
+    --------------------------
+    parameter:
+    result_query - A dictionary resulting from the list of documents extracted from mongodb
+
+    return: 
+    dictionary with claen values
+    """
     dictionary = {}
     dictionary['city'] = result_query['nome']
     for each in result_query['valores']:
@@ -23,7 +31,15 @@ def get_values(result_query):
 
 
 def build_dataframe(documents):
-    """Build a pandas dataframe from the result of the function above"""
+    """
+    Build a pandas dataframe from the result of the above function
+    ----------------------------------
+    parameter.
+    documents: List with all the documents gathered from the database
+
+    return:
+    dataframe
+    """
     dataframes = []
     for document in documents:
         dictionary = get_values(document)
@@ -36,7 +52,16 @@ def build_dataframe(documents):
 
 
 def visualize(dataframe, title='Title'):
-    """Generate the visualization in the app from the dataframe created in the above function"""
+    """
+    Generate the visualization in the app
+    -------------------------------------
+    parameters:
+    dataframe - A pandas dataframe built from the abive function
+    title - plot´s title
+
+    return:
+    plotly figure
+    """
     unity = dataframe['unidade'][0] if dataframe['unidade'][0] != None else 'Quantidade'
     fig = px.line(dataframe, 
                   x='ano',
