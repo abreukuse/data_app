@@ -95,7 +95,7 @@ if __name__ == '__main__':
 
             result_query = find_document(query=query, cities=municipalities)
             dataframe = build_dataframe(documents=result_query)
-            st.plotly_chart(visualize(dataframe=dataframe, title=query))
+            st.plotly_chart(visualize(dataframe=dataframe, title=query.replace('.', ' | ')))
 
         except Exception as e:
             print(e)
