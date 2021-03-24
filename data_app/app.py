@@ -21,7 +21,7 @@ def show_introduction():
     Com essa aplicação é possível  visualizar dados de séries temporais de diversos fatores socioeconômicos do estado do Rio Grande do Sul. Os dados foram coletados do site da [Fundação de Economia e Estatística](https://dados.fee.tche.br/index.php).<br>
     Para gerar uma visualização, selecione à esquerda até três cidades que você gostaria de saber alguma informação e novas opções de busca irão surgindo.<br> 
     Alguns exemplos de dados que podem ser acessados são:  Agricultura, Comércio, Comunicações, Demografia, Educação, Emprego, Saúde, Segurança, Transportes entre outros.
-    Informações sobre o significado de cada variável socioeconômica pode ser vista nesse [link](http://deedados.planejamento.rs.gov.br/feedados/#!home/descricaovariaveis).
+    Informações sobre o significado de cada variável socioeconômica podem ser vistas nesse [link](http://deedados.planejamento.rs.gov.br/feedados/#!home/descricaovariaveis).
 
     [Tobias de Abreu Kuse](https://www.linkedin.com/in/tobias-de-abreu-kuse/)<br>
     [github](https://github.com/abreukuse/data_app) 
