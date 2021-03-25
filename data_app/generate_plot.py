@@ -45,7 +45,7 @@ def build_dataframe(documents):
         dictionary = get_values(document)
         df = pd.DataFrame.from_dict(dictionary)
         df = df.dropna(how='any', subset=['ano','valor']).reset_index(drop=True)
-        if '$' in df['unidade'][0]:
+        if (df['unidade'][0] != None) and ('$' in df['unidade'][0]):
             df = df.query('ano >= 1994').reset_index(drop=True)
         dataframes.append(df)
     return pd.concat(dataframes).reset_index(drop=True)
