@@ -45,7 +45,7 @@ st.markdown(show_introduction(), unsafe_allow_html=True)
 dictionary_master, cities = load_dict()
 
 # All cities listed in a dropdown
-municipalities = st.sidebar.multiselect('Selecione até três cidades', cities)
+municipalities = st.sidebar.multiselect('Selecione até três cidades', cities)[:3]
 
 def getFromDict(dataDict, mapList):
     """
