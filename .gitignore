@@ -6,3 +6,4 @@ data_app/.ipynb_checkpoints/*
 .venv/*
 tox.ini
 data_app/data_wrangling/__pycache__/*
+.tox/*
