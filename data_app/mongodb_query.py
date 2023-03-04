@@ -8,12 +8,14 @@ from dotenv import load_dotenv
 
 def get_env_variables():
     load_dotenv()
-    return os.getenv("MONGODB_URI")
+    return (os.getenv("USUARIO"),
+            os.getenv("SENHA"),
+            os.getenv("CLUSTER"))
 
 # local_connection = 'mongodb://localhost:27017/'
 # remote_connection = os.environ['MONGODB_URI'] # Access heroku config vars
-remote_connection = get_env_variables()
-myclient = pymongo.MongoClient(remote_connection)
+usuario, senha, cluster = get_env_variables()
+myclient = pymongo.MongoClient(f"mongodb+srv://{usuario}:{senha}@{cluster}.mlrrx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 database = myclient['fee_database']
 
 def find_document(query, cities): 

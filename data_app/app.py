@@ -13,7 +13,7 @@ from config import FILES
 
 st.set_page_config(layout="wide")
 
-@st.cache(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def show_introduction():
     introduction = """
     ## Visualização de Séries Temporais de Fatores Socioeconômicos do Estado do Rio Grande do Sul
@@ -28,7 +28,7 @@ def show_introduction():
     """
     return introduction
 
-@st.cache(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def load_dict():
     """Load the dictionary with all the keys and the list with all the cities."""
     path_dictionary = FILES / 'dictionary_master.json'
