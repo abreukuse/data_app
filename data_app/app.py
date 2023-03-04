@@ -100,3 +100,4 @@ if __name__ == '__main__':
         except Exception as e:
             print(e)
             st.write('A busca não obteve resultado.')
+            st.write(e)
