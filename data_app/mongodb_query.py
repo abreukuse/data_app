@@ -4,9 +4,15 @@ Query data from mongodb.
 
 import pymongo
 import os
+from dotenv import load_dotenv
+
+def get_env_variables():
+    load_dotenv()
+    return os.getenv("MONGODB_URI")
 
 # local_connection = 'mongodb://localhost:27017/'
-remote_connection = os.environ['MONGODB_URI'] # Access heroku config vars
+# remote_connection = os.environ['MONGODB_URI'] # Access heroku config vars
+remote_connection = get_env_variables()
 myclient = pymongo.MongoClient(remote_connection)
 database = myclient['fee_database']
 
